@@ -114,7 +114,7 @@ module.exports = function(grunt) {
   // prod runs when 'prod' grunt option is called when upload is queued
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
-      grunt.task.run(['shell', 'build']);
+      grunt.task.run(['shell']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
