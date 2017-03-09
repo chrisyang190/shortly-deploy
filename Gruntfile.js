@@ -108,7 +108,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', /*'mochaTest',*/, 'nodemon'
+  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'nodemon' 
   ]);
 
   // prod runs when 'prod' grunt option is called when upload is queued
