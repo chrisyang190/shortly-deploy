@@ -103,12 +103,12 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
   // Main grunt tasks
   ////////////////////////////////////////////////////
-//test
+
   grunt.registerTask('test', [
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'mochaTest', 'watch'
+  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', /*'mochaTest',*/ 'watch'
   ]);
 
   // prod runs when 'prod' grunt option is called when upload is queued
