@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       },
       dist: {
         // grabs all files within all subdirectories of public
-        src: [ 'public/client/**/*.js', 'public/lib/**/*.js'],
+        src: [ 'public/client/**/*.js'],
         dest: 'public/dist/build.js'
       }
     },
