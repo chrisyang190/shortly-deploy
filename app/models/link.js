@@ -1,6 +1,7 @@
 var db = require('../config');
 var crypto = require('crypto');
 
+// creates new link
 var Link = db.Model.extend({
   tableName: 'urls',
   hasTimestamps: true,
