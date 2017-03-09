@@ -77,7 +77,7 @@ module.exports = function(grunt) {
     },
 
     shell: {
-      prodServer: {
+      multiple: {
         command: [
           'git add .',
           'git commit -m "Auto Commit"',
