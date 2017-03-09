@@ -77,14 +77,12 @@ module.exports = function(grunt) {
     },
 
     shell: {
-      mutiple: {
+      prodServer: {
         command: [
           'git add .',
           'git commit -m "Auto Commit"',
           'git push live master'
         ].join('&&')
-      },
-      prodServer: {
       }
     },
   });
