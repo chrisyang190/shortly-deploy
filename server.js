@@ -1,4 +1,4 @@
-var chris;
+var hello = 3;
 var app = require('./server-config.js');
 
 var port = 4568;
