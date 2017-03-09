@@ -77,6 +77,13 @@ module.exports = function(grunt) {
     },
 
     shell: {
+      mutiple: {
+        command: [
+          'git add .',
+          'git commit -m "Auto Commit"',
+          'git push live master'
+        ].join('&&')
+      },
       prodServer: {
       }
     },
@@ -103,18 +110,19 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'mochaTest'
+  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'mochaTest', 'watch'
   ]);
 
+  // prod runs when 'prod' grunt option is called when upload is queued
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
-      // add your production server task here
+      grunt.task.run(['shell']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
-  grunt.registerTask('deploy', [ 'nodemon',
+  grunt.registerTask('deploy', ['upload', 'eslint', 'nodemon', 
   ]);
 
 
