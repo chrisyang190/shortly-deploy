@@ -3,6 +3,15 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';',
+        stripBanners: false
+      },
+      dist: {
+        // grabs all files within all subdirectories of public
+        src: [ 'public/client/**/*.js', 'public/lib/**/*.js'],
+        dest: 'public/dist/build.js'
+      }
     },
 
     mochaTest: {
@@ -21,15 +30,28 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      my_target: {
+        files: {
+          'public/dist/output.min.js': ['public/dist/build.js']
+        }
+      }
     },
 
     eslint: {
+      options: {
+        configFile: './node_modules/eslint-config-hackreactor/index.js',
+      },
       target: [
-        // Add list of files to lint here
+        'public/dist/build.js'
       ]
     },
 
     cssmin: {
+      target: {
+        files: {
+          'public/dist/output.min.css': ['public/*.css']
+        }
+      }
     },
 
     watch: {
@@ -40,7 +62,9 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'concat',
-          'uglify'
+          'uglify',
+          'eslint',
+          'mochaTest'
         ]
       },
       css: {
@@ -76,7 +100,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'eslint', 'mochaTest'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -87,8 +111,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [
-    // add your deploy tasks here
+  grunt.registerTask('deploy', [ 'nodemon',
   ]);
 
 
