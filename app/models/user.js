@@ -14,7 +14,6 @@ userSchema.methods.comparePassword = function(storedPassword, attemptedPassword,
     if (err) { 
       callback(err); 
     } else {
-      console.log('passwords', storedPassword, attemptedPassword)
       callback(null, isMatch);
     }
   });
